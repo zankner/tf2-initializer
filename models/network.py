@@ -6,8 +6,8 @@ from tensorflow.keras.layers import (
 )
 from tensorflow.keras import Model
 
-#Defining network Below (including class name)
-class (Model):
+#Defining network Below:
+class Network(Model):
   def __init__(self):
     super(UNet, self).__init__()
     # Define layers of the network:

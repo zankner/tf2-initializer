@@ -38,7 +38,7 @@ class Train(object):
         self.ckpt = tf.train.Checkpoint(step=tf.Variable(1), optimizer=self.optimizer,
                 net=self.model)
         # Define Checkpoint manager:
-        self.ckpt_manager = tf.train.CheckpointManager(self.ckpt, f'checkpoints{params.ckpt_dir}',
+        self.ckpt_manager = tf.train.CheckpointManager(self.ckpt, f'checkpoints/{params.ckpt_dir}',
                 max_to_keep=3)
 
     # Feed forward through and update model on train data:
