@@ -174,4 +174,7 @@ tags
 # Coc configuration directory
 .vim
 
+# Ignore .env
+env/
+
 # End of https://www.gitignore.io/api/vim,linux,macos,pythong
