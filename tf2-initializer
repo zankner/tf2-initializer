@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+import os
+from importlib_resources import path
+import shutil
+import actuation
+import preprocess
+import models
+
+dir_name = input('What is the name of your project: ')
+
+os.mkdir(os.path.join(os.getcwd(), dir_name))
+os.mkdir(os.path.join(os.getcwd(), dir_name, 'actuation'))
+os.mkdir(os.path.join(os.getcwd(), dir_name, 'models'))
+os.mkdir(os.path.join(os.getcwd(), dir_name, 'preprocess'))
+os.mkdir(os.path.join(os.getcwd(), dir_name, 'checkpoints'))
+os.mkdir(os.path.join(os.getcwd(), dir_name, 'data'))
+os.mkdir(os.path.join(os.getcwd(), dir_name, 'data', 'train'))
+os.mkdir(os.path.join(os.getcwd(), dir_name, 'data', 'val'))
+
+with path(actuation, 'train.py') as train:
+  shutil.copy(train,
+      os.path.join(os.getcwd(), dir_name, 'actuation', 'train.py'))
+
+with path(models, 'network.py') as network:
+  shutil.copy(network, 
+    os.path.join(os.getcwd(), dir_name, 'models', 'network.py'))
+
+with path(preprocess, 'process.py') as process:
+  shutil.copy(process,
+    os.path.join(os.getcwd(), dir_name, 'preprocess', 'process.py'))

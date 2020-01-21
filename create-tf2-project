@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-APP_NAME=${1:-tf2-project}
-
-mkdir -p "${APP_NAME}/actuation" && cp actuation/train.py "${APP_NAME}/actuation/train.py"
-mkdir -p "${APP_NAME}/models" && cp models/network.py "${APP_NAME}/models/network.py"
-mkdir -p "${APP_NAME}/preprocess" && cp preprocess/process.py "${APP_NAME}/preprocess/process.py"
-mkdir "${APP_NAME}/checkpoints"
-mkdir -p "${APP_NAME}/data/train" && mkdir -p "${APP_NAME}/data/val"
