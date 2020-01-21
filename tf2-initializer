@@ -6,20 +6,28 @@ import actuation
 import preprocess
 import models
 
-dir_name = input('What is the name of your project: ')
+dir_name = input('What is the name of your project (return to use current dir): ')
 
-os.mkdir(os.path.join(os.getcwd(), dir_name))
-os.mkdir(os.path.join(os.getcwd(), dir_name, 'actuation'))
-os.mkdir(os.path.join(os.getcwd(), dir_name, 'models'))
-os.mkdir(os.path.join(os.getcwd(), dir_name, 'preprocess'))
-os.mkdir(os.path.join(os.getcwd(), dir_name, 'checkpoints'))
-os.mkdir(os.path.join(os.getcwd(), dir_name, 'data'))
-os.mkdir(os.path.join(os.getcwd(), dir_name, 'data', 'train'))
-os.mkdir(os.path.join(os.getcwd(), dir_name, 'data', 'val'))
+if not os.path.exists(os.path.join(os.getcwd(), dir_name)):
+  os.mkdir(os.path.join(os.getcwd(), dir_name))
+if not os.path.exists(os.path.join(os.getcwd(), dir_name, 'actuation')):
+  os.mkdir(os.path.join(os.getcwd(), dir_name, 'actuation'))
+if not os.path.exists(os.path.join(os.getcwd(), dir_name, 'models')):
+  os.mkdir(os.path.join(os.getcwd(), dir_name, 'models'))
+if not os.path.exists(os.path.join(os.getcwd(), dir_name, 'preprocess')):
+  os.mkdir(os.path.join(os.getcwd(), dir_name, 'preprocess'))
+if not os.path.exists(os.path.join(os.getcwd(), dir_name, 'checkpoints')):
+  os.mkdir(os.path.join(os.getcwd(), dir_name, 'checkpoints'))
+if not os.path.exists(os.path.join(os.getcwd(), dir_name, 'data')):
+  os.mkdir(os.path.join(os.getcwd(), dir_name, 'data'))
+if not os.path.exists(os.path.join(os.getcwd(), dir_name, 'data', 'train')):
+  os.mkdir(os.path.join(os.getcwd(), dir_name, 'data', 'train'))
+if not os.path.exists(os.path.join(os.getcwd(), dir_name, 'data', 'val')):
+  os.mkdir(os.path.join(os.getcwd(), dir_name, 'data', 'val'))
 
 with path(actuation, 'train.py') as train:
   shutil.copy(train,
-      os.path.join(os.getcwd(), dir_name, 'actuation', 'train.py'))
+    os.path.join(os.getcwd(), dir_name, 'actuation', 'train.py'))
 
 with path(models, 'network.py') as network:
   shutil.copy(network, 
