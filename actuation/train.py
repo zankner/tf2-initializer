@@ -56,7 +56,7 @@ class Train(object):
     # Feed forward through model on test data:
     @tf.function
     def _test(self, inputs, labels):
-        predictions = self.model(labels)
+        predictions = self.model(inputs)
         loss = self.loss_object(labels, predictions)
 
         self.test_loss(loss)
@@ -100,7 +100,7 @@ class Train(object):
             for inputs, labels in self.train_ds:
                 self._update(inputs, labels)
             for testInputs, testLabels in self.test_ds:
-                self._test(testInput, testLabels)
+                self._test(testInputs, testLabels)
             self._log(epoch)
             self._save()
             self._reset()
