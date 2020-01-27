@@ -3,9 +3,9 @@ import argparse
 import logging
 import tensorflow as tf
 # Import losses:
-from tensorflow.keras.losses import 
+from tensorflow.keras.losses import
 # Import optimizers:
-from tensorflow.keras.optimizers import 
+from tensorflow.keras.optimizers import
 # Import metrics:
 from tensorflow.keras.metrics import (
   Mean, SparseCategoricalAccuracy
@@ -21,14 +21,14 @@ class Train(object):
         self.lr = params.lr
         self.epochs = params.epochs
         # Define loss:
-        self.loss_object = 
+        self.loss_object =
         # Define optimizer:
-        self.optimizer = 
+        self.optimizer =
         # Define metrics for loss:
-        self.train_loss = 
-        self.train_accuracy = 
-        self.test_loss = 
-        self.test_accuracy = 
+        self.train_loss =
+        self.train_accuracy =
+        self.test_loss =
+        self.test_accuracy =
         # Define model:
         self.model = Network()
         # Define pre processor (params):
@@ -72,17 +72,17 @@ class Train(object):
             self.test_accuracy.result() * 100))
 
     # Save model to checkpoint:
-    def _save(self):
-        if int(self.ckpt.step) % 10 == 0:
-            save_path = self.ckpt_manager().save()
+    def _save(self, verbose=False):
+        save_path = self.ckpt_manager.save()]
+        if verbose:
             ckptLog = f"Saved checkpoint for step {int(self.ckpt.step)}: {save_path}"
             print(ckptLog)
 
     # Restore model from checkpoint:
     def _restore(self):
-        self.ckpt.restore(self.ckpt_manager.latest_checkpoint)
+        self.ckpt.restore(self.ckpt_manager.latest_checkpoint).expect_partial()
         if self.ckpt_manager.latest_checkpoint:
-            print(f"Restored from {manager.latest_checkpoint}")
+            print(f"Restored from {self.ckpt_manager.latest_checkpoint}")
         else:
             print("Initializing from scratch.")
 
@@ -92,7 +92,7 @@ class Train(object):
         self.train_accuracy.reset_states()
         self.test_loss.reset_states()
         self.test_accuracy.reset_states()
-    
+
     # Train loop for network:
     def train(self):
         self._restore()

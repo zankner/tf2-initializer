@@ -6,7 +6,7 @@ with open('README.md', 'r') as f:
 
 setuptools.setup(
   name='tf2-initializer',
-  version='0.4',
+  version='0.5',
   scripts=['tf2-initializer'],
   author='Zack Ankner',
   author_email='zackankner@gmail.com',
